@@ -312,7 +312,7 @@ function FeaturedWork() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
             >
-              <Link href={project.href} className="group block">
+              <a href={project.href} target="_blank" rel="noopener noreferrer" className="group block">
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden gradient-border">
                   {project.image ? (
                     <Image
@@ -336,7 +336,7 @@ function FeaturedWork() {
                     </h3>
                   </div>
                 </div>
-              </Link>
+              </a>
             </motion.div>
           ))}
         </div>

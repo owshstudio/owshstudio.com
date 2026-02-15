@@ -205,35 +205,67 @@ export default function WorkPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link href={project.url} className="group block">
-                  <div className="relative aspect-[16/10] rounded-2xl overflow-hidden gradient-border mb-4">
-                    {project.image ? (
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-owsh-orange/10 via-owsh-magenta/10 to-owsh-purple/10 flex items-center justify-center">
-                        <span className="text-white/20 text-lg font-medium">Your project here</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2 text-owsh-orange text-sm font-medium mb-2">
-                    <span>{project.category}</span>
-                    {project.location && (
-                      <>
-                        <span className="text-white/30">•</span>
-                        <span className="text-white/50">{project.location}</span>
-                      </>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-semibold text-white group-hover:gradient-text transition-all mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-white/50 text-sm">{project.description}</p>
-                </Link>
+                {project.url.startsWith('http') ? (
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="group block">
+                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden gradient-border mb-4">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-owsh-orange/10 via-owsh-magenta/10 to-owsh-purple/10 flex items-center justify-center">
+                          <span className="text-white/20 text-lg font-medium">Your project here</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 text-owsh-orange text-sm font-medium mb-2">
+                      <span>{project.category}</span>
+                      {project.location && (
+                        <>
+                          <span className="text-white/30">•</span>
+                          <span className="text-white/50">{project.location}</span>
+                        </>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-semibold text-white group-hover:gradient-text transition-all mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-white/50 text-sm">{project.description}</p>
+                  </a>
+                ) : (
+                  <Link href={project.url} className="group block">
+                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden gradient-border mb-4">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-owsh-orange/10 via-owsh-magenta/10 to-owsh-purple/10 flex items-center justify-center">
+                          <span className="text-white/20 text-lg font-medium">Your project here</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 text-owsh-orange text-sm font-medium mb-2">
+                      <span>{project.category}</span>
+                      {project.location && (
+                        <>
+                          <span className="text-white/30">•</span>
+                          <span className="text-white/50">{project.location}</span>
+                        </>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-semibold text-white group-hover:gradient-text transition-all mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-white/50 text-sm">{project.description}</p>
+                  </Link>
+                )}
               </motion.div>
             ))}
         </div>

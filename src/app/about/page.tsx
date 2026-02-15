@@ -188,7 +188,7 @@ export default function AboutPage() {
             Systems, a website health platform, and more to come.
           </p>
           <a
-            href="https://owshunlimited.com"
+            href="https://owshunlimited.com" target="_blank" rel="noopener noreferrer"
             target="_blank"
             rel="noopener noreferrer"
             className="text-owsh-orange hover:underline underline-offset-4 text-sm"
