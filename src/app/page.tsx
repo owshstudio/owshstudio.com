@@ -420,12 +420,24 @@ function PricingPreview() {
                 </div>
               )}
               <div
-                className={`h-full p-8 rounded-2xl ${
+                className={`h-full p-8 rounded-2xl relative ${
                   plan.popular
-                    ? "bg-gradient-to-b from-owsh-magenta/10 to-transparent border-2 border-owsh-magenta/40"
+                    ? "bg-gradient-to-b from-owsh-magenta/10 to-transparent"
                     : "bg-white/[0.02] border border-white/10"
                 }`}
+                style={plan.popular ? {
+                  background: 'linear-gradient(to bottom, rgba(217, 70, 239, 0.1), transparent)',
+                  border: '2px solid transparent',
+                  backgroundClip: 'padding-box',
+                } : undefined}
               >
+              {plan.popular && (
+                <div className="absolute inset-0 rounded-2xl -z-10" style={{
+                  background: 'linear-gradient(135deg, #f97316, #d946ef, #8b5cf6)',
+                  margin: '-2px',
+                  borderRadius: 'calc(1rem + 2px)',
+                }} />
+              )}
                 <h3 className="text-lg font-semibold text-white">{plan.name}</h3>
                 <p className="text-white/50 text-sm mt-1">{plan.description}</p>
                 <div className="mt-6 mb-8">
