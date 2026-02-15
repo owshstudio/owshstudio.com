@@ -131,7 +131,7 @@ export default function WorkPage() {
               viewport={{ once: true }}
             >
               <a href={project.url} target="_blank" rel="noopener noreferrer" className="group block">
-                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden gradient-border mb-8">
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden gradient-border mb-8">
                   {project.image ? (
                     <Image
                       src={project.image}
@@ -142,19 +142,19 @@ export default function WorkPage() {
                   ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-owsh-orange/10 via-owsh-magenta/10 to-owsh-purple/10" />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/10" />
 
                   {/* Overlay content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                    <div className="flex items-center gap-2 text-owsh-orange text-sm font-medium mb-3 drop-shadow-lg">
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
+                    <div className="flex items-center gap-2 text-owsh-orange text-sm font-medium mb-3">
                       <span>{project.category}</span>
                       <span className="text-white/30">•</span>
-                      <span className="text-white/50">{project.location}</span>
+                      <span className="text-white/60">{project.location}</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:gradient-text transition-all drop-shadow-lg">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:gradient-text transition-all">
                       {project.title}
                     </h2>
-                    <p className="text-white/70 text-lg max-w-2xl mb-6 drop-shadow-lg">
+                    <p className="text-white/80 text-lg max-w-2xl mb-6">
                       {project.description}
                     </p>
                     <div className="flex items-center gap-8">
