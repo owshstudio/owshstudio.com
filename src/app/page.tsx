@@ -100,7 +100,7 @@ function Hero() {
           >
             Beautiful sites for local businesses.{" "}
             <span className="text-white">Free to build.</span>{" "}
-            <span className="gradient-text font-semibold">$185/month</span> to keep live.
+            <span className="gradient-text font-semibold">$75/month</span> to keep live.
           </motion.p>
 
           {/* CTAs */}
