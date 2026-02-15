@@ -44,7 +44,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <motion.a
-                href="https://instagram.com/owshstudio" target="_blank" rel="noopener noreferrer"
+                href="https://instagram.com/owshstudio"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -59,7 +59,7 @@ export default function Footer() {
                 </svg>
               </motion.a>
               <motion.a
-                href="https://facebook.com/owshstudio" target="_blank" rel="noopener noreferrer"
+                href="https://facebook.com/owshstudio"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -74,7 +74,7 @@ export default function Footer() {
                 </svg>
               </motion.a>
               <motion.a
-                href="https://linkedin.com/company/owshstudio" target="_blank" rel="noopener noreferrer"
+                href="https://linkedin.com/company/owshstudio"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}

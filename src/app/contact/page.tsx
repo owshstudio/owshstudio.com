@@ -264,7 +264,7 @@ export default function ContactPage() {
               </h2>
               <div className="flex gap-4">
                 <a
-                  href="https://instagram.com/owshstudio" target="_blank" rel="noopener noreferrer"
+                  href="https://instagram.com/owshstudio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 p-4 rounded-xl bg-white/[0.02] hover:bg-white/5 transition-colors text-center"
@@ -279,7 +279,7 @@ export default function ContactPage() {
                   <span className="text-sm text-white/70">Instagram</span>
                 </a>
                 <a
-                  href="https://facebook.com/owshstudio" target="_blank" rel="noopener noreferrer"
+                  href="https://facebook.com/owshstudio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 p-4 rounded-xl bg-white/[0.02] hover:bg-white/5 transition-colors text-center"
@@ -294,7 +294,7 @@ export default function ContactPage() {
                   <span className="text-sm text-white/70">Facebook</span>
                 </a>
                 <a
-                  href="https://linkedin.com/company/owshstudio" target="_blank" rel="noopener noreferrer"
+                  href="https://linkedin.com/company/owshstudio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 p-4 rounded-xl bg-white/[0.02] hover:bg-white/5 transition-colors text-center"
