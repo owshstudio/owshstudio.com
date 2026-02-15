@@ -201,20 +201,20 @@ export default function PricingPage() {
               transition={{ delay: index * 0.1 }}
               className="relative flex flex-col"
             >
+              <div
+                className={`flex-1 flex flex-col p-8 rounded-2xl ${
+                  plan.popular
+                    ? "bg-gradient-to-b from-owsh-magenta/10 to-transparent border-2 border-owsh-magenta/40 ring-1 ring-owsh-magenta/20"
+                    : "bg-white/[0.02] border border-white/10"
+                }`}
+              >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                <div className="flex justify-center -mt-4 mb-4">
                   <span className="px-4 py-1 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple rounded-full text-xs font-semibold text-white">
                     Most Popular
                   </span>
                 </div>
               )}
-              <div
-                className={`flex-1 flex flex-col p-8 rounded-2xl ${
-                  plan.popular
-                    ? "bg-gradient-to-b from-owsh-magenta/10 to-transparent border-2 border-owsh-magenta/30"
-                    : "bg-white/[0.02] border border-white/10"
-                }`}
-              >
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold text-white mb-2">
                     {plan.name}

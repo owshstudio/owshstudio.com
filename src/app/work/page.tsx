@@ -7,22 +7,6 @@ import { ArrowRightIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 const projects = [
   {
-    id: "mclears-cottage-colony",
-    title: "McLear's Cottage Colony",
-    category: "Hospitality",
-    location: "Hammond, NY",
-    description:
-      "A 90-year-old family cottage colony needed a modern website that honored their rich heritage while making it easy for guests to book.",
-    image: "/work/mclears.jpg",
-    url: "https://mclears.com",
-    featured: true,
-    stats: [
-      { label: "Pages", value: "6" },
-      { label: "Timeline", value: "3 weeks" },
-      { label: "Plan", value: "Standard" },
-    ],
-  },
-  {
     id: "orange-crate-brewing",
     title: "Orange Crate Brewing Co.",
     category: "Food & Beverage",
@@ -31,10 +15,41 @@ const projects = [
       "Syracuse's go-to sports bar and brewery needed a site that matched their game day energy and drove online orders.",
     image: "/work/orangecrate.jpg",
     url: "https://orangecratebrewingco.com",
-    featured: false,
+    featured: true,
     stats: [
       { label: "Type", value: "Restaurant" },
       { label: "Features", value: "Menu, Events" },
+      { label: "Orders", value: "Online" },
+    ],
+  },
+  {
+    id: "collegeclassreviews",
+    title: "CollegeClassReviews",
+    category: "Education Platform",
+    location: "Studio Project",
+    description:
+      "Course review platform for NY universities. 14,000+ pages of dynamically generated content with full CMS.",
+    image: "/work/collegeclassreviews.jpg",
+    url: "https://collegeclassreviews.com",
+    featured: false,
+    stats: [
+      { label: "Pages", value: "14K+" },
+      { label: "Type", value: "Full CMS" },
+    ],
+  },
+  {
+    id: "mclears-cottage-colony",
+    title: "McLear's Cottage Colony",
+    category: "Hospitality",
+    location: "Hammond, NY",
+    description:
+      "A 90-year-old family cottage colony needed a modern website that honored their rich heritage.",
+    image: "/work/mclears.jpg",
+    url: "/work/mclears-cottage-colony",
+    featured: false,
+    stats: [
+      { label: "Pages", value: "6" },
+      { label: "Plan", value: "Standard" },
     ],
   },
   {
@@ -43,7 +58,7 @@ const projects = [
     category: "Sports Analytics",
     location: "Studio Project",
     description:
-      "NHL predictions and analytics platform. Real-time data, power rankings, and performance tracking for hockey fans.",
+      "NHL predictions and analytics platform with real-time data and power rankings.",
     image: "/work/puckcast.jpg",
     url: "https://puckcast.ai",
     featured: false,
@@ -58,7 +73,7 @@ const projects = [
     category: "SaaS Platform",
     location: "Studio Project",
     description:
-      "Website health platform that helps businesses understand and improve their digital presence. Our sister product.",
+      "Website health platform that helps businesses understand and improve their digital presence.",
     image: "/work/owshsystems.jpg",
     url: "https://owshsystems.com",
     featured: false,

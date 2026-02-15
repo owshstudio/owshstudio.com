@@ -258,10 +258,10 @@ function HowItWorks() {
 function FeaturedWork() {
   const projects = [
     {
-      title: "McLear's Cottage Colony",
-      category: "Hospitality",
-      image: "/work/mclears.jpg",
-      href: "/work/mclears-cottage-colony",
+      title: "Orange Crate Brewing Co.",
+      category: "Food & Beverage",
+      image: "/work/orangecrate.jpg",
+      href: "https://orangecratebrewingco.com",
     },
     {
       title: "CollegeClassReviews",
@@ -498,8 +498,8 @@ function Testimonial() {
             Super helpful and personable. The website turned out better than I ever imagined. Would recommend over and over again.
           </blockquote>
           <div className="flex flex-col items-center gap-2">
-            <span className="text-white font-medium">Janet McLear</span>
-            <span className="text-white/50">McLear&apos;s Cottage Colony</span>
+            <span className="text-white font-medium">Happy Client</span>
+            <span className="text-white/50">Buffalo, NY</span>
           </div>
         </motion.div>
       </div>
