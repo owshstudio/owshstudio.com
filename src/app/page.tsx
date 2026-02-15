@@ -79,8 +79,8 @@ function Hero() {
           {/* Badge */}
           <motion.div variants={fadeUp} className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-owsh-orange to-owsh-magenta animate-pulse" />
-              Buffalo, NY
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              Now accepting new clients
             </span>
           </motion.div>
 
@@ -262,21 +262,18 @@ function FeaturedWork() {
       category: "Hospitality",
       image: "/work/mclears.jpg",
       href: "/work/mclears-cottage-colony",
-      featured: true,
     },
     {
-      title: "Orange Crate Brewing Co.",
-      category: "Food & Beverage",
-      image: "/work/orangecrate.jpg",
-      href: "https://orangecratebrewingco.com",
-      featured: false,
+      title: "CollegeClassReviews",
+      category: "Education Platform",
+      image: "/work/collegeclassreviews.jpg",
+      href: "https://collegeclassreviews.com",
     },
     {
       title: "PuckCast.ai",
       category: "Sports Analytics",
       image: "/work/puckcast.jpg",
       href: "https://puckcast.ai",
-      featured: false,
     },
   ];
 
@@ -329,12 +326,12 @@ function FeaturedWork() {
                       <span className="text-white/30 text-xl">?</span>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-owsh-dark via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-owsh-orange text-sm font-medium">
+                    <span className="text-owsh-orange text-sm font-medium drop-shadow-lg">
                       {project.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-white mt-1 group-hover:gradient-text transition-all">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-white mt-2 group-hover:gradient-text transition-all drop-shadow-lg">
                       {project.title}
                     </h3>
                   </div>
@@ -415,17 +412,17 @@ function PricingPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative ${plan.popular ? "md:-mt-4 md:mb-4" : ""}`}
+              className="relative"
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple rounded-full text-xs font-semibold text-white">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple rounded-full text-xs font-semibold text-white z-10">
                   Most Popular
                 </div>
               )}
               <div
                 className={`h-full p-8 rounded-2xl ${
                   plan.popular
-                    ? "bg-gradient-to-b from-owsh-magenta/10 to-transparent border border-owsh-magenta/30"
+                    ? "bg-gradient-to-b from-owsh-magenta/10 to-transparent border-2 border-owsh-magenta/40"
                     : "bg-white/[0.02] border border-white/10"
                 }`}
               >
@@ -498,7 +495,7 @@ function Testimonial() {
             </svg>
           </div>
           <blockquote className="text-2xl sm:text-3xl md:text-4xl font-medium text-white leading-relaxed">
-            Finally, a website I&apos;m actually proud to share with guests.
+            Super helpful and personable. The website turned out better than I ever imagined. Would recommend over and over again.
           </blockquote>
           <div className="flex flex-col items-center gap-2">
             <span className="text-white font-medium">Janet McLear</span>

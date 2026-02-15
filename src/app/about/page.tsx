@@ -96,27 +96,25 @@ export default function AboutPage() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="relative rounded-3xl overflow-hidden"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-owsh-orange/5 via-owsh-magenta/5 to-owsh-purple/5" />
-          <div className="relative p-12 md:p-16">
-            <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-owsh-orange to-owsh-purple flex items-center justify-center relative overflow-hidden">
-                <span className="text-3xl font-bold text-white">BUF</span>
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity" />
-              </div>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                  Based in Buffalo, NY
-                </h2>
-                <p className="text-white/60 text-lg max-w-2xl">
-                  I care about local businesses because they&apos;re the ones that
-                  actually make a city feel like home. The neighborhood coffee shop,
-                  the family restaurant, the contractor who shows up when he says
-                  he will. These businesses deserve great websites too.
-                </p>
-              </div>
-            </div>
+          <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10">
+            <div className="text-4xl font-bold gradient-text mb-2">Buffalo</div>
+            <p className="text-white/60">
+              Born and raised in Upstate NY. This is home.
+            </p>
+          </div>
+          <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10">
+            <div className="text-4xl font-bold gradient-text mb-2">Local</div>
+            <p className="text-white/60">
+              Focused on businesses that make cities feel like home.
+            </p>
+          </div>
+          <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10">
+            <div className="text-4xl font-bold gradient-text mb-2">Neighbors</div>
+            <p className="text-white/60">
+              You&apos;re not a ticket number. You&apos;re down the street.
+            </p>
           </div>
         </motion.div>
       </section>
