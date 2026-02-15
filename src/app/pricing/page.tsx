@@ -223,8 +223,9 @@ export default function PricingPage() {
               )}
               {plan.popular && (
                 <div className="flex justify-center -mt-4 mb-4">
-                  <span className="px-4 py-1 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple rounded-full text-xs font-semibold text-white">
-                    Most Popular
+                  <span className="px-4 py-1 rounded-full text-xs font-semibold relative">
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple" style={{ padding: '1px', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
+                    <span className="relative gradient-text font-semibold">Most Popular</span>
                   </span>
                 </div>
               )}

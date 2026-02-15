@@ -140,6 +140,11 @@ body {
 }
 
 /* Custom button hover effect */
+.btn-glow {
+  box-shadow: 0 0 0px 0px transparent;
+  transition: box-shadow 0.3s ease;
+}
+
 .btn-glow:hover {
   box-shadow: 0 0 30px -5px var(--gradient-mid);
 }

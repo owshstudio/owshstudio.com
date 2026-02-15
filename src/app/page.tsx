@@ -415,8 +415,9 @@ function PricingPreview() {
               className="relative"
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple rounded-full text-xs font-semibold text-white z-10">
-                  Most Popular
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-semibold text-white z-10 relative">
+                  <span className="absolute inset-0 rounded-full bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple" style={{ padding: '1px', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
+                  <span className="relative gradient-text font-semibold">Most Popular</span>
                 </div>
               )}
               <div
@@ -509,10 +510,6 @@ function Testimonial() {
           <blockquote className="text-2xl sm:text-3xl md:text-4xl font-medium text-white leading-relaxed">
             Super helpful and personable. The website turned out better than I ever imagined. Would recommend over and over again.
           </blockquote>
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-white font-medium">Happy Client</span>
-            <span className="text-white/50">Buffalo, NY</span>
-          </div>
         </motion.div>
       </div>
     </section>
