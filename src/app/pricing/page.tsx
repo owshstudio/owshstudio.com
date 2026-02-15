@@ -203,7 +203,7 @@ export default function PricingPage() {
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <span className="gradient-border-pill px-3 py-1 text-xs font-semibold gradient-text">
+                  <span className="gradient-border-pill px-3 py-1 text-xs font-semibold text-white">
                     Most Popular
                   </span>
                 </div>
@@ -211,23 +211,10 @@ export default function PricingPage() {
               <div
                 className={`flex-1 flex flex-col p-8 rounded-2xl relative ${
                   plan.popular
-                    ? "bg-gradient-to-b from-owsh-magenta/10 to-transparent"
+                    ? "gradient-border"
                     : "bg-white/[0.02] border border-white/10"
                 }`}
-                style={plan.popular ? {
-                  background: 'linear-gradient(to bottom, rgba(217, 70, 239, 0.1), transparent)',
-                  border: '2px solid transparent',
-                  backgroundClip: 'padding-box',
-                  position: 'relative',
-                } : undefined}
               >
-              {plan.popular && (
-                <div className="absolute inset-0 rounded-2xl -z-10" style={{
-                  background: 'linear-gradient(135deg, #f97316, #d946ef, #8b5cf6)',
-                  margin: '-2px',
-                  borderRadius: 'calc(1rem + 2px)',
-                }} />
-              )}
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold text-white mb-2">
                     {plan.name}
