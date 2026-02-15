@@ -201,6 +201,13 @@ export default function PricingPage() {
               transition={{ delay: index * 0.1 }}
               className="relative flex flex-col"
             >
+              {plan.popular && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="gradient-border-pill px-3 py-1 text-xs font-semibold gradient-text">
+                    Most Popular
+                  </span>
+                </div>
+              )}
               <div
                 className={`flex-1 flex flex-col p-8 rounded-2xl relative ${
                   plan.popular
@@ -220,14 +227,6 @@ export default function PricingPage() {
                   margin: '-2px',
                   borderRadius: 'calc(1rem + 2px)',
                 }} />
-              )}
-              {plan.popular && (
-                <div className="flex justify-center -mt-4 mb-4">
-                  <span className="px-4 py-1 rounded-full text-xs font-semibold relative">
-                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple" style={{ padding: '1px', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
-                    <span className="relative gradient-text font-semibold">Most Popular</span>
-                  </span>
-                </div>
               )}
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold text-white mb-2">
