@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | OWSH Studio",
   },
   description:
-    "We build beautiful, fast websites for local businesses. Free build, $185/month. No contracts, cancel anytime. Based in Buffalo, NY.",
+    "We build beautiful, fast websites for local businesses. Free build, starting at $75/month. No contracts, cancel anytime. Based in Buffalo, NY.",
   keywords: [
     "web design",
     "Buffalo NY",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "OWSH Studio | Websites for Local Businesses",
     description:
-      "We build beautiful, fast websites for local businesses. Free build, $185/month. No contracts, cancel anytime.",
+      "We build beautiful, fast websites for local businesses. Free build, starting at $75/month. No contracts, cancel anytime.",
     url: "https://owshstudio.com",
     siteName: "OWSH Studio",
     locale: "en_US",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "OWSH Studio | Websites for Local Businesses",
     description:
-      "We build beautiful, fast websites for local businesses. Free build, $185/month. No contracts, cancel anytime.",
+      "We build beautiful, fast websites for local businesses. Free build, starting at $75/month. No contracts, cancel anytime.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -94,7 +94,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "OWSH Studio",
-  "description": "Web design studio building beautiful, fast websites for local businesses. Free build, $185/month. No contracts, cancel anytime.",
+  "description": "Web design studio building beautiful, fast websites for local businesses. Free build, starting at $75/month. No contracts, cancel anytime.",
   "url": "https://owshstudio.com",
   "logo": "https://owshstudio.com/logo.png",
   "image": "https://owshstudio.com/og-image.png",
@@ -203,9 +203,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-owsh-dark text-white min-h-screen`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-owsh-dark focus:text-white focus:rounded-lg focus:border focus:border-white/20"
+        >
+          Skip to main content
+        </a>
         <EasterEgg />
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>

@@ -104,7 +104,14 @@ export default async function Image() {
           >
             <span>Free build</span>
             <span>•</span>
-            <span>$185/month</span>
+            <span
+              style={{
+                background: "linear-gradient(90deg, #f97316, #ec4899, #a855f7)",
+                backgroundClip: "text",
+                color: "transparent",
+                fontWeight: 600,
+              }}
+            >Starting at $75/month</span>
             <span>•</span>
             <span>Cancel anytime</span>
           </div>
