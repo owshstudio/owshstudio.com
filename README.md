@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OWSH Studio
+
+**Website:** [owshstudio.com](https://owshstudio.com)
+
+A web design studio for local businesses. We build beautiful, fast websites with no upfront cost — just a simple monthly subscription.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Fonts:** Geist Sans & Mono
+- **Deployment:** Vercel
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── page.tsx          # Homepage
+│   ├── work/             # Portfolio pages
+│   ├── pricing/          # Pricing page
+│   ├── about/            # About page
+│   ├── contact/          # Contact page
+│   ├── privacy/          # Privacy policy
+│   ├── terms/            # Terms of service
+│   └── layout.tsx        # Root layout
+├── components/
+│   ├── Navbar.tsx        # Navigation
+│   ├── Footer.tsx        # Footer
+│   ├── Button.tsx        # Button component
+│   ├── SectionHeading.tsx
+│   └── GradientBlob.tsx  # Decorative blob
+└── ...
+```
 
-## Learn More
+## Design System
 
-To learn more about Next.js, take a look at the following resources:
+### Colors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Background:** `#0a0a0a`
+- **Gradient:** Orange (`#f97316`) → Magenta (`#ec4899`) → Purple (`#a855f7`)
+- **Text:** White with opacity variants
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Typography
 
-## Deploy on Vercel
+- Headlines: Geist Sans, Bold
+- Body: Geist Sans, Regular
+- Mono: Geist Mono (for code/technical)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is optimized for Vercel:
+
+```bash
+# Deploy to Vercel
+vercel
+```
+
+Or connect your GitHub repo to Vercel for automatic deployments.
+
+## Easter Eggs
+
+- Check the browser console 👀
+- Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A
+
+## Contact
+
+**Noah Owsiany**  
+Email: noah@owshstudio.com  
+Location: Buffalo, NY
+
+---
+
+Built with ❤️ and a lot of ☕ by OWSH Studio.
