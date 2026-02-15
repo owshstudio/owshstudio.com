@@ -90,6 +90,103 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "OWSH Studio",
+  "description": "Web design studio building beautiful, fast websites for local businesses. Free build, $185/month. No contracts, cancel anytime.",
+  "url": "https://owshstudio.com",
+  "logo": "https://owshstudio.com/logo.png",
+  "image": "https://owshstudio.com/og-image.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buffalo",
+    "addressRegion": "NY",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 42.8864,
+    "longitude": -78.8784
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.8864,
+      "longitude": -78.8784
+    },
+    "geoRadius": "100 mi"
+  },
+  "priceRange": "$75-$400/month",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "email": "hello@owshunlimited.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Noah Owsiany"
+  },
+  "sameAs": [
+    "https://instagram.com/owshstudio",
+    "https://facebook.com/owshstudio",
+    "https://linkedin.com/company/owshstudio"
+  ],
+  "serviceType": ["Web Design", "Web Development", "SEO", "Local Business Websites"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web Design Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Landing Page",
+          "description": "1 page website with contact form"
+        },
+        "price": "75",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "75",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Standard Website",
+          "description": "5-7 page website with full SEO"
+        },
+        "price": "185",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "185",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full CMS Website",
+          "description": "10+ page website with content management"
+        },
+        "price": "400",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "400",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      }
+    ]
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -97,6 +194,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-owsh-dark text-white min-h-screen`}
       >
