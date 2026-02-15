@@ -89,36 +89,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Location callout */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <motion.div
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-        >
-          <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10">
-            <div className="text-4xl font-bold gradient-text mb-2">Buffalo</div>
-            <p className="text-white/60">
-              Born and raised in Upstate NY. This is home.
-            </p>
-          </div>
-          <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10">
-            <div className="text-4xl font-bold gradient-text mb-2">Local</div>
-            <p className="text-white/60">
-              Focused on businesses that make cities feel like home.
-            </p>
-          </div>
-          <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10">
-            <div className="text-4xl font-bold gradient-text mb-2">Neighbors</div>
-            <p className="text-white/60">
-              You&apos;re not a ticket number. You&apos;re down the street.
-            </p>
-          </div>
-        </motion.div>
-      </section>
-
       {/* Values */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <motion.div
