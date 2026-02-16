@@ -171,7 +171,7 @@ export default function WorkPage() {
 
                   {/* Visit site button */}
                   <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="flex items-center gap-2 px-4 py-2 bg-white text-owsh-dark rounded-full text-sm font-medium">
+                    <span className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple text-white rounded-full text-sm font-medium shadow-lg">
                       Visit Site
                       <ArrowUpRightIcon className="w-4 h-4" />
                     </span>
