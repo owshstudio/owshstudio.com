@@ -6,13 +6,13 @@ export function EasterEgg() {
   useEffect(() => {
     // Console easter egg
     const styles = [
-      "color: #f97316",
+      "color: #DF4F15",
       "font-size: 20px",
       "font-weight: bold",
     ].join(";");
 
     const subStyles = [
-      "color: #a855f7",
+      "color: #A326B5",
       "font-size: 14px",
     ].join(";");
 
@@ -20,7 +20,7 @@ export function EasterEgg() {
     console.log("%cWe build websites that work.", subStyles);
     console.log(
       "%cLooking for a job? Email hello@owshunlimited.com",
-      "color: #ec4899; font-size: 12px;"
+      "color: #F9425F; font-size: 12px;"
     );
 
     // Konami code easter egg

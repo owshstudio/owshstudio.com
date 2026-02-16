@@ -3,9 +3,9 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --gradient-start: #f97316;
-  --gradient-mid: #ec4899;
-  --gradient-end: #a855f7;
+  --gradient-start: #DF4F15;
+  --gradient-mid: #F9425F;
+  --gradient-end: #A326B5;
 }
 
 @theme inline {

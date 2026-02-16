@@ -12,9 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         owsh: {
-          orange: "#f97316",
-          magenta: "#ec4899",
-          purple: "#a855f7",
+          orange: "#DF4F15",
+          magenta: "#F9425F",
+          purple: "#A326B5",
           dark: "#0a0a0a",
           darker: "#050505",
           gray: {
@@ -38,7 +38,7 @@ export default {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "owsh-gradient": "linear-gradient(135deg, #f97316 0%, #ec4899 50%, #a855f7 100%)",
+        "owsh-gradient": "linear-gradient(135deg, #DF4F15 0%, #F9425F 50%, #A326B5 100%)",
         "owsh-gradient-soft": "linear-gradient(135deg, rgba(249,115,22,0.2) 0%, rgba(236,72,153,0.2) 50%, rgba(168,85,247,0.2) 100%)",
       },
       animation: {

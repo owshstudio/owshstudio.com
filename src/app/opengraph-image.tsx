@@ -171,7 +171,7 @@ export default async function Image() {
                 fontWeight: 800,
                 lineHeight: 1.05,
                 letterSpacing: "-0.03em",
-                background: "linear-gradient(135deg, #f97316, #ec4899, #a855f7)",
+                background: "linear-gradient(135deg, #DF4F15, #F9425F, #A326B5)",
                 backgroundClip: "text",
                 color: "transparent",
               }}
@@ -215,7 +215,7 @@ export default async function Image() {
                   style={{
                     fontSize: "36px",
                     fontWeight: 700,
-                    background: "linear-gradient(135deg, #f97316, #ec4899, #a855f7)",
+                    background: "linear-gradient(135deg, #DF4F15, #F9425F, #A326B5)",
                     backgroundClip: "text",
                     color: "transparent",
                   }}
@@ -259,7 +259,7 @@ export default async function Image() {
             left: 0,
             right: 0,
             height: "4px",
-            background: "linear-gradient(90deg, #f97316, #ec4899, #a855f7)",
+            background: "linear-gradient(90deg, #DF4F15, #F9425F, #A326B5)",
           }}
         />
       </div>
