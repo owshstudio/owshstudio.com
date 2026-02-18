@@ -220,6 +220,12 @@ export default function WorkPage() {
                           <span className="text-white/20 text-lg font-medium">Your project here</span>
                         </div>
                       )}
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple text-white rounded-full text-xs font-medium shadow-lg">
+                          Visit Site
+                          <ArrowUpRightIcon className="w-3 h-3" />
+                        </span>
+                      </div>
                     </div>
                     <div className="flex items-center gap-2 text-owsh-orange text-sm font-medium mb-2">
                       <span>{project.category}</span>
@@ -248,6 +254,14 @@ export default function WorkPage() {
                       ) : (
                         <div className="absolute inset-0 bg-gradient-to-br from-owsh-orange/10 via-owsh-magenta/10 to-owsh-purple/10 flex items-center justify-center">
                           <span className="text-white/20 text-lg font-medium">Your project here</span>
+                        </div>
+                      )}
+                      {project.image && (
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <span className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple text-white rounded-full text-xs font-medium shadow-lg">
+                            View Project
+                            <ArrowRightIcon className="w-3 h-3" />
+                          </span>
                         </div>
                       )}
                     </div>
