@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/Button";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { ArrowRightIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 // Animation variants
@@ -249,6 +250,73 @@ function HowItWorks() {
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+// Transformation Engine Section
+function TransformationEngine() {
+  return (
+    <section className="py-24 sm:py-32 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            See the <span className="gradient-text">difference</span>
+          </h2>
+          <p className="text-white/60 text-lg max-w-3xl mx-auto">
+            This is what happens when a website is rebuilt against 150+ digital health standards. Performance, SEO, accessibility, security. All baked in from day one.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="max-w-4xl mx-auto"
+        >
+          <BeforeAfterSlider />
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-center text-white/40 text-sm mt-6 max-w-2xl mx-auto"
+        >
+          Twin Trees Fayetteville. Same business, completely transformed online presence.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="max-w-3xl mx-auto mt-12"
+        >
+          <div className="gradient-border p-8">
+            <p className="text-white/70 text-lg leading-relaxed">
+              Every site we build goes through our proprietary health engine. 150+ checks across performance, search visibility, accessibility, and security. Your site does not just look good. It works.
+            </p>
+          </div>
+          <div className="text-center mt-6">
+            <a
+              href="https://owshsystems.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-white/40 hover:text-white/70 transition-colors underline underline-offset-4"
+            >
+              Explore the engine behind the builds
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -499,6 +567,7 @@ function Testimonial() {
           <blockquote className="text-2xl sm:text-3xl md:text-4xl font-medium text-white leading-relaxed">
             Super helpful and personable. The website turned out better than I ever imagined. Would recommend over and over again.
           </blockquote>
+          <p className="text-white/40 mt-6 text-lg">Real client feedback</p>
         </motion.div>
       </div>
     </section>
@@ -550,6 +619,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <HowItWorks />
+      <TransformationEngine />
       <FeaturedWork />
       <PricingPreview />
       <Testimonial />

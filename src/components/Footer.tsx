@@ -11,6 +11,11 @@ const footerLinks = {
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ],
+  ecosystem: [
+    { href: "https://owshsystems.com", label: "OWSH Systems", external: true },
+    { href: "https://audit.owshsystems.com", label: "Free Audit Tools", external: true },
+    { href: "https://owshunlimited.com", label: "OWSH Unlimited", external: true },
+  ],
   legal: [
     { href: "/privacy", label: "Privacy" },
     { href: "/terms", label: "Terms" },
@@ -21,7 +26,7 @@ export default function Footer() {
   return (
     <footer className="bg-owsh-darker border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
@@ -111,6 +116,27 @@ export default function Footer() {
                   >
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Ecosystem */}
+          <div>
+            <p className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+              Ecosystem
+            </p>
+            <ul className="space-y-3">
+              {footerLinks.ecosystem.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/50 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

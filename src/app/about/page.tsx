@@ -126,6 +126,43 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* More than a design studio */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            More than a <span className="gradient-text">design studio</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="gradient-border p-8"
+        >
+          <p className="text-white/60 text-lg leading-relaxed mb-4">
+            Every site we build is run through our proprietary health engine, checking 150+ standards across performance, search visibility, accessibility, and security. We do not just make websites that look good. We make sure they actually perform.
+          </p>
+          <p className="text-white/60 text-lg leading-relaxed mb-6">
+            This is the same engine that powers OWSH Systems, our Digital Presence Health Platform. It is the foundation of everything we build, and it is what separates an OWSH site from the rest.
+          </p>
+          <a
+            href="https://owshsystems.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-owsh-orange hover:underline underline-offset-4 text-sm"
+          >
+            Learn more about the engine behind the builds →
+          </a>
+        </motion.div>
+      </section>
+
       {/* The Stack (for nerds) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <motion.div

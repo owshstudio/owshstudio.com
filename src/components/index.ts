@@ -3,3 +3,4 @@ export { default as Footer } from "./Footer";
 export { default as Button } from "./Button";
 export { default as SectionHeading } from "./SectionHeading";
 export { default as GradientBlob } from "./GradientBlob";
+export { default as BeforeAfterSlider } from "./BeforeAfterSlider";
