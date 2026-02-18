@@ -147,19 +147,17 @@ export default function AboutPage() {
           className="gradient-border p-8"
         >
           <p className="text-white/60 text-lg leading-relaxed mb-4">
-            Every site we build is run through our proprietary health engine, checking 150+ standards across performance, search visibility, accessibility, and security. We do not just make websites that look good. We make sure they actually perform.
+            We built a diagnostic engine that checks 150+ standards across 6 categories: performance, SEO, accessibility, security, content quality, and deep site analysis. Every Studio site is built to pass these checks on day one. Not after fixes. Not eventually. Day one.
           </p>
           <p className="text-white/60 text-lg leading-relaxed mb-6">
-            This is the same engine that powers OWSH Systems, our Digital Presence Health Platform. It is the foundation of everything we build, and it is what separates an OWSH site from the rest.
+            46 fix guides with platform-specific instructions for WordPress, Shopify, Squarespace, Wix, and Webflow. 4 Chrome extensions for quick audits. And a full health dashboard that tracks everything over time.
           </p>
-          <a
-            href="https://owshsystems.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/systems"
             className="text-owsh-orange hover:underline underline-offset-4 text-sm"
           >
-            Learn more about the engine behind the builds →
-          </a>
+            See exactly what we check →
+          </Link>
         </motion.div>
       </section>
 

@@ -6,7 +6,16 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/Button";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import { ArrowRightIcon, CheckIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowRightIcon,
+  CheckIcon,
+  BoltIcon,
+  MagnifyingGlassIcon,
+  EyeIcon,
+  ShieldCheckIcon,
+  DocumentTextIcon,
+  CpuChipIcon,
+} from "@heroicons/react/24/outline";
 
 // Animation variants
 const fadeUp = {
@@ -301,19 +310,38 @@ function TransformationEngine() {
           transition={{ delay: 0.3 }}
           className="max-w-3xl mx-auto mt-12"
         >
-          <div className="gradient-border p-8">
-            <p className="text-white/70 text-lg leading-relaxed">
-              Every site we build goes through our proprietary health engine. 150+ checks across performance, search visibility, accessibility, and security. Your site does not just look good. It works.
-            </p>
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {[
+              { icon: BoltIcon, label: "Performance" },
+              { icon: MagnifyingGlassIcon, label: "SEO" },
+              { icon: EyeIcon, label: "Accessibility" },
+              { icon: ShieldCheckIcon, label: "Security" },
+              { icon: DocumentTextIcon, label: "Content" },
+              { icon: CpuChipIcon, label: "Deep Analysis" },
+            ].map((item) => (
+              <span
+                key={item.label}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70"
+              >
+                <item.icon className="w-4 h-4 text-owsh-orange" />
+                {item.label}
+              </span>
+            ))}
           </div>
-          <div className="text-center mt-6">
+          <p className="text-center text-white/60 mb-6">
+            Every site we build passes 150+ checks across these 6 categories before it goes live.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button href="/systems" variant="secondary" size="md">
+              See what we check
+            </Button>
             <a
-              href="https://owshsystems.com"
+              href="https://audit.owshsystems.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-white/40 hover:text-white/70 transition-colors underline underline-offset-4"
+              className="text-sm text-white/50 hover:text-white transition-colors underline underline-offset-4"
             >
-              Explore the engine behind the builds
+              Try a free audit
             </a>
           </div>
         </motion.div>

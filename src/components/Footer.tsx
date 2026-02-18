@@ -12,7 +12,7 @@ const footerLinks = {
     { href: "/contact", label: "Contact" },
   ],
   ecosystem: [
-    { href: "https://owshsystems.com", label: "OWSH Systems", external: true },
+    { href: "/systems", label: "OWSH Systems", external: false },
     { href: "https://audit.owshsystems.com", label: "Free Audit Tools", external: true },
     { href: "https://owshunlimited.com", label: "OWSH Unlimited", external: true },
   ],
@@ -129,14 +129,23 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.ecosystem.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/50 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/50 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-white/50 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
