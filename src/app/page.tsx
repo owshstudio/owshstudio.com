@@ -132,7 +132,7 @@ function HealthScoreRing() {
         </svg>
         {/* Score text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center rotate-0">
-          <span className="text-3xl font-bold text-white font-display">
+          <span className="text-3xl font-bold text-white">
             {isInView ? <AnimatedCounter target={94} /> : "0"}
           </span>
           <span className="text-sm text-white/40">/100</span>
@@ -295,7 +295,7 @@ function Hero() {
 // Problem/Solution Section
 function Problem() {
   return (
-    <section className="py-24 sm:py-32 relative dot-pattern">
+    <section className="py-24 sm:py-32 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -392,7 +392,7 @@ function HowItWorks() {
 // Transformation Engine Section
 function TransformationEngine() {
   return (
-    <section className="py-24 sm:py-32 relative dot-pattern">
+    <section className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -416,7 +416,7 @@ function TransformationEngine() {
           className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-20 mb-16"
         >
           <div className="flex flex-col items-center">
-            <span className="text-7xl sm:text-8xl font-bold gradient-text font-display">
+            <span className="text-7xl sm:text-8xl font-bold gradient-text">
               <AnimatedCounter target={150} suffix="+" />
             </span>
             <span className="text-sm text-white/50 mt-2 font-medium">
@@ -727,7 +727,7 @@ function PricingPreview() {
 // Testimonial Section
 function Testimonial() {
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden dot-pattern">
+    <section className="py-24 sm:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-owsh-orange/5 via-owsh-magenta/5 to-owsh-purple/5" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
