@@ -11,6 +11,7 @@ import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/Button";
+import MagneticButton from "@/components/MagneticButton";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   ArrowRightIcon,
@@ -27,6 +28,13 @@ import {
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
+};
+
+const slideFromLeft = {
+  initial: { opacity: 0, x: -60 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true } as const,
+  transition: { duration: 0.7, ease: "easeOut" as const },
 };
 
 const stagger = {
@@ -164,31 +172,31 @@ function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Different parallax speeds for each orb
+  const orbY1 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const orbY2 = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
+  const orbY3 = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
 
   return (
     <section
       ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Animated gradient orbs */}
+      {/* Animated gradient orbs with different parallax speeds */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          style={{ y }}
+          style={{ y: orbY1 }}
           className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-owsh-orange/20 blur-[120px] animate-pulse-glow"
         />
         <motion.div
-          style={{ y }}
-          className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-owsh-magenta/20 blur-[120px] animate-pulse-glow"
-          // @ts-expect-error style prop type
-          style={{ animationDelay: "1s", y }}
+          style={{ y: orbY2 }}
+          className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-owsh-magenta/20 blur-[120px] animate-pulse-glow [animation-delay:1s]"
         />
         <motion.div
-          style={{ y }}
-          className="absolute -bottom-1/4 left-1/4 w-1/2 h-1/2 rounded-full bg-owsh-purple/20 blur-[120px] animate-pulse-glow"
-          // @ts-expect-error style prop type
-          style={{ animationDelay: "2s", y }}
+          style={{ y: orbY3 }}
+          className="absolute -bottom-1/4 left-1/4 w-1/2 h-1/2 rounded-full bg-owsh-purple/20 blur-[120px] animate-pulse-glow [animation-delay:2s]"
         />
       </div>
 
@@ -203,7 +211,7 @@ function Hero() {
       />
 
       <motion.div
-        style={{ opacity }}
+        style={{ opacity, y: textY }}
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"
       >
         <motion.div
@@ -225,17 +233,16 @@ function Hero() {
             variants={fadeUp}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight"
           >
-            <span className="block text-white">Your business deserves</span>
-            <span className="block gradient-text">more than a bad website.</span>
+            <span className="block text-white">Your digital presence is</span>
+            <span className="block gradient-text animate-gradient" style={{ backgroundSize: "200% 200%" }}>costing you customers.</span>
           </motion.h1>
 
-          {/* Subheadline with pricing hook */}
+          {/* Subheadline - no price */}
           <motion.p
             variants={fadeUp}
             className="max-w-2xl mx-auto text-xl sm:text-2xl text-white/60"
           >
-            We build fast, modern sites optimized against 150+ health standards. Performance, SEO, accessibility, security. All baked in. Starting at{" "}
-            <span className="gradient-text font-semibold">$75/mo</span>.
+            We find what is broken, fix what is missing, and build sites that actually bring in business. Every site we deliver passes the same standards used by top agencies.
           </motion.p>
 
           {/* CTAs */}
@@ -243,10 +250,12 @@ function Hero() {
             variants={fadeUp}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button href="/get-started" size="lg">
-              Get Started
-              <ArrowRightIcon className="w-5 h-5 ml-2" />
-            </Button>
+            <MagneticButton>
+              <Button href="/get-started" size="lg">
+                Get Started
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Button>
+            </MagneticButton>
             <Button href="/work" variant="secondary" size="lg">
               See Our Work
             </Button>
@@ -259,7 +268,7 @@ function Hero() {
           >
             <span className="flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-owsh-orange" />
-              150+ health checks on every build
+              Sites built to outperform, not just look good
             </span>
             <span className="flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-owsh-magenta" />
@@ -267,7 +276,7 @@ function Hero() {
             </span>
             <span className="flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-owsh-purple" />
-              $75/mo to start
+              Free to build, pay when you are ready
             </span>
           </motion.div>
         </motion.div>
@@ -311,7 +320,7 @@ function Problem() {
             </span>
           </p>
           <p className="text-3xl sm:text-4xl font-bold gradient-text">
-            We build it free. Optimize it to 150+ standards. You pay monthly to keep it live.
+            We build it for free. You only pay when you love it.
           </p>
         </motion.div>
       </div>
@@ -319,7 +328,27 @@ function Problem() {
   );
 }
 
-// How It Works Section
+// Large Statement Typography Section
+function BigStatement() {
+  return (
+    <section className="py-32 sm:py-40 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white leading-tight"
+        >
+          The first place your customers look is online.{" "}
+          <span className="gradient-text">What do they find?</span>
+        </motion.h2>
+      </div>
+    </section>
+  );
+}
+
+// How It Works Section - Horizontal Scroll on Desktop
 function HowItWorks() {
   const steps = [
     {
@@ -342,47 +371,90 @@ function HowItWorks() {
     },
   ];
 
-  return (
-    <section className="py-24 sm:py-32 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            How it works
-          </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            No upfront costs. No long contracts. Just a great website.
-          </p>
-        </motion.div>
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-65%"]);
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className="relative group"
+  return (
+    <section ref={sectionRef} className="relative">
+      {/* Desktop: horizontal scroll */}
+      <div className="hidden md:block h-[300vh]">
+        <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-12">
+            <motion.h2
+              {...slideFromLeft}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
             >
-              <div className="gradient-border p-8 h-full hover:bg-white/[0.02] transition-colors">
-                <span className="text-5xl font-bold gradient-text opacity-50 group-hover:opacity-100 transition-opacity">
-                  {step.number}
-                </span>
-                <h3 className="text-xl font-semibold text-white mt-4 mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-white/60">{step.description}</p>
+              How it works
+            </motion.h2>
+            <p className="text-white/60 text-lg max-w-2xl">
+              No upfront costs. No long contracts. Just a great website.
+            </p>
+          </div>
+
+          <motion.div style={{ x }} className="flex gap-8 pl-8">
+            {steps.map((step) => (
+              <div
+                key={step.number}
+                className="flex-shrink-0 w-[500px] group"
+              >
+                <div className="gradient-border p-10 h-full hover:bg-white/[0.02] transition-colors">
+                  <span className="text-6xl font-bold gradient-text opacity-50 group-hover:opacity-100 transition-opacity">
+                    {step.number}
+                  </span>
+                  <h3 className="text-2xl font-semibold text-white mt-6 mb-4">
+                    {step.title}
+                  </h3>
+                  <p className="text-white/60 text-lg leading-relaxed">{step.description}</p>
+                </div>
               </div>
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-[2px] bg-gradient-to-r from-white/20 to-transparent" />
-              )}
-            </motion.div>
-          ))}
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Mobile: vertical stack */}
+      <div className="md:hidden py-24 sm:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              How it works
+            </h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+              No upfront costs. No long contracts. Just a great website.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 gap-8">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                className="relative group"
+              >
+                <div className="gradient-border p-8 h-full hover:bg-white/[0.02] transition-colors">
+                  <span className="text-5xl font-bold gradient-text opacity-50 group-hover:opacity-100 transition-opacity">
+                    {step.number}
+                  </span>
+                  <h3 className="text-xl font-semibold text-white mt-4 mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-white/60">{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -391,20 +463,25 @@ function HowItWorks() {
 
 // Transformation Engine Section
 function TransformationEngine() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: sliderScrollProgress } = useScroll({
+    target: sliderRef,
+    offset: ["start end", "end start"],
+  });
+  const sliderY = useTransform(sliderScrollProgress, [0, 1], [30, -30]);
+
   return (
     <section className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...slideFromLeft}
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             See the <span className="gradient-text">difference</span>
           </h2>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">
-            This is what happens when a website is rebuilt against 150+ digital health standards. Performance, SEO, accessibility, security. All baked in from day one.
+            We check if Google can actually find your business. If your site loads before people leave. If it works on every phone and browser. If customers can trust what they see. Most sites fail over half of these checks. Ours don&apos;t.
           </p>
         </motion.div>
 
@@ -427,6 +504,8 @@ function TransformationEngine() {
         </motion.div>
 
         <motion.div
+          ref={sliderRef}
+          style={{ y: sliderY }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -466,12 +545,12 @@ function TransformationEngine() {
         >
           <div className="flex flex-wrap justify-center gap-3 mb-6">
             {[
-              { icon: BoltIcon, label: "Performance" },
-              { icon: MagnifyingGlassIcon, label: "SEO" },
-              { icon: EyeIcon, label: "Accessibility" },
-              { icon: ShieldCheckIcon, label: "Security" },
-              { icon: DocumentTextIcon, label: "Content" },
-              { icon: CpuChipIcon, label: "Deep Analysis" },
+              { icon: BoltIcon, label: "Fast loading" },
+              { icon: MagnifyingGlassIcon, label: "Found on Google" },
+              { icon: EyeIcon, label: "Works for everyone" },
+              { icon: ShieldCheckIcon, label: "Safe and trusted" },
+              { icon: DocumentTextIcon, label: "Clear messaging" },
+              { icon: CpuChipIcon, label: "Nothing missed" },
             ].map((item) => (
               <span
                 key={item.label}
@@ -641,9 +720,7 @@ function PricingPreview() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...slideFromLeft}
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
@@ -778,10 +855,12 @@ function FinalCTA() {
             Or bring us your Facebook page. We&apos;ll turn it into a real website.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button href="/get-started" size="lg">
-              Let&apos;s Build Yours
-              <ArrowRightIcon className="w-5 h-5 ml-2" />
-            </Button>
+            <MagneticButton>
+              <Button href="/get-started" size="lg">
+                Let&apos;s Build Yours
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Button>
+            </MagneticButton>
           </div>
           <p className="text-white/40 text-sm">
             Or just have questions?{" "}
@@ -804,6 +883,7 @@ export default function Home() {
       <Hero />
       <GradientDivider />
       <Problem />
+      <BigStatement />
       <HowItWorks />
       <GradientDivider />
       <TransformationEngine />

@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { EasterEgg } from "@/components/EasterEgg";
+import PageLoader from "@/components/PageLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -216,6 +217,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <PageLoader />
         <EasterEgg />
         <Navbar />
         <main id="main-content">{children}</main>
