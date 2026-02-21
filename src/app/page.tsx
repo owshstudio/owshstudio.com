@@ -1,7 +1,13 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  animate,
+} from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/Button";
@@ -30,6 +36,126 @@ const stagger = {
     },
   },
 };
+
+// Gradient section divider
+function GradientDivider() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="gradient-divider" />
+    </div>
+  );
+}
+
+// Animated counter that counts up when scrolled into view
+function AnimatedCounter({
+  target,
+  suffix = "",
+}: {
+  target: number;
+  suffix?: string;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const controls = animate(0, target, {
+      duration: 2,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [isInView, target]);
+
+  return (
+    <span ref={ref} className="inline-flex items-baseline">
+      <span>{display}</span>
+      {suffix && <span>{suffix}</span>}
+    </span>
+  );
+}
+
+// Health score circular ring
+function HealthScoreRing() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const circumference = 2 * Math.PI * 54; // radius = 54
+  const fillPercent = 94 / 100;
+  const strokeDashoffset = circumference * (1 - fillPercent);
+
+  return (
+    <div ref={ref} className="flex flex-col items-center">
+      <div className="relative w-36 h-36">
+        <svg viewBox="0 0 120 120" className="w-full h-full -rotate-90">
+          {/* Background ring */}
+          <circle
+            cx="60"
+            cy="60"
+            r="54"
+            fill="none"
+            stroke="rgba(255,255,255,0.08)"
+            strokeWidth="6"
+          />
+          {/* Gradient definition */}
+          <defs>
+            <linearGradient
+              id="scoreGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#DF4F15" />
+              <stop offset="50%" stopColor="#F9425F" />
+              <stop offset="100%" stopColor="#A326B5" />
+            </linearGradient>
+          </defs>
+          {/* Animated fill ring */}
+          <motion.circle
+            cx="60"
+            cy="60"
+            r="54"
+            fill="none"
+            stroke="url(#scoreGradient)"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={
+              isInView
+                ? { strokeDashoffset: strokeDashoffset }
+                : { strokeDashoffset: circumference }
+            }
+            transition={{ duration: 2, ease: "easeOut" }}
+          />
+        </svg>
+        {/* Score text */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center rotate-0">
+          <span className="text-3xl font-bold text-white font-display">
+            {isInView ? <AnimatedCounter target={94} /> : "0"}
+          </span>
+          <span className="text-sm text-white/40">/100</span>
+        </div>
+      </div>
+      <span className="text-sm text-white/50 mt-3 font-medium">
+        Health Score
+      </span>
+    </div>
+  );
+}
+
+// Powered by OWSH Systems badge
+function PoweredBadge() {
+  return (
+    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full gradient-border-pill badge-glow">
+      <ShieldCheckIcon className="w-4 h-4 text-owsh-orange" />
+      <span className="text-sm font-medium text-white/80">
+        Powered by OWSH Systems
+      </span>
+    </div>
+  );
+}
 
 // Hero Section with animated gradient orbs
 function Hero() {
@@ -99,8 +225,8 @@ function Hero() {
             variants={fadeUp}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight"
           >
-            <span className="block text-white">Websites that</span>
-            <span className="block gradient-text">actually work.</span>
+            <span className="block text-white">Your business deserves</span>
+            <span className="block gradient-text">more than a bad website.</span>
           </motion.h1>
 
           {/* Subheadline with pricing hook */}
@@ -108,9 +234,8 @@ function Hero() {
             variants={fadeUp}
             className="max-w-2xl mx-auto text-xl sm:text-2xl text-white/60"
           >
-            Beautiful sites for local businesses.{" "}
-            <span className="text-white">Free to build.</span>{" "}
-            <span className="gradient-text font-semibold">$75/month</span> to keep live.
+            We build fast, modern sites optimized against 150+ health standards. Performance, SEO, accessibility, security. All baked in. Starting at{" "}
+            <span className="gradient-text font-semibold">$75/mo</span>.
           </motion.p>
 
           {/* CTAs */}
@@ -118,7 +243,7 @@ function Hero() {
             variants={fadeUp}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button href="/contact" size="lg">
+            <Button href="/get-started" size="lg">
               Get Started
               <ArrowRightIcon className="w-5 h-5 ml-2" />
             </Button>
@@ -134,15 +259,15 @@ function Hero() {
           >
             <span className="flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-owsh-orange" />
-              No contracts
+              150+ health checks on every build
             </span>
             <span className="flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-owsh-magenta" />
-              Cancel anytime
+              No contracts
             </span>
             <span className="flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-owsh-purple" />
-              Hosting included
+              $75/mo to start
             </span>
           </motion.div>
         </motion.div>
@@ -170,7 +295,7 @@ function Hero() {
 // Problem/Solution Section
 function Problem() {
   return (
-    <section className="py-24 sm:py-32 relative">
+    <section className="py-24 sm:py-32 relative dot-pattern">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -186,7 +311,7 @@ function Problem() {
             </span>
           </p>
           <p className="text-3xl sm:text-4xl font-bold gradient-text">
-            We fixed that.
+            We build it free. Optimize it to 150+ standards. You pay monthly to keep it live.
           </p>
         </motion.div>
       </div>
@@ -205,9 +330,9 @@ function HowItWorks() {
     },
     {
       number: "02",
-      title: "We build your site (free)",
+      title: "We build and optimize your site",
       description:
-        "Design, copy, everything. Ready in 2-3 weeks. You pay nothing until you love it.",
+        "Every site is checked against 150+ digital health standards before you see it. Performance, SEO, accessibility, security. Built in from line one.",
     },
     {
       number: "03",
@@ -267,7 +392,7 @@ function HowItWorks() {
 // Transformation Engine Section
 function TransformationEngine() {
   return (
-    <section className="py-24 sm:py-32 relative">
+    <section className="py-24 sm:py-32 relative dot-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -283,6 +408,24 @@ function TransformationEngine() {
           </p>
         </motion.div>
 
+        {/* Animated counter + Health score */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-20 mb-16"
+        >
+          <div className="flex flex-col items-center">
+            <span className="text-7xl sm:text-8xl font-bold gradient-text font-display">
+              <AnimatedCounter target={150} suffix="+" />
+            </span>
+            <span className="text-sm text-white/50 mt-2 font-medium">
+              health standards checked on every build
+            </span>
+          </div>
+          <HealthScoreRing />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -293,12 +436,23 @@ function TransformationEngine() {
           <BeforeAfterSlider />
         </motion.div>
 
+        {/* Powered by OWSH Systems badge */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="flex justify-center mt-6 mb-2"
+        >
+          <PoweredBadge />
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-center text-white/40 text-sm mt-6 max-w-2xl mx-auto"
+          className="text-center text-white/40 text-sm mt-4 max-w-2xl mx-auto"
         >
           Twin Trees Fayetteville. Same business, completely transformed online presence.
         </motion.p>
@@ -445,14 +599,14 @@ function FeaturedWork() {
 function PricingPreview() {
   const plans = [
     {
-      name: "Landing Page",
+      name: "Starter",
       price: "$75",
       period: "/month",
       description: "Perfect for simple presence",
       features: ["1 page", "Contact form", "Mobile friendly", "Basic SEO"],
     },
     {
-      name: "Standard",
+      name: "Growth",
       price: "$185",
       period: "/month",
       description: "For most businesses",
@@ -466,7 +620,7 @@ function PricingPreview() {
       popular: true,
     },
     {
-      name: "Full CMS",
+      name: "Pro",
       price: "$400",
       period: "/month",
       description: "Self-editable content",
@@ -573,7 +727,7 @@ function PricingPreview() {
 // Testimonial Section
 function Testimonial() {
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden">
+    <section className="py-24 sm:py-32 relative overflow-hidden dot-pattern">
       <div className="absolute inset-0 bg-gradient-to-r from-owsh-orange/5 via-owsh-magenta/5 to-owsh-purple/5" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -620,8 +774,11 @@ function FinalCTA() {
           <p className="text-white/60 text-xl max-w-2xl mx-auto">
             Let&apos;s build something you&apos;re proud of. Takes 15 minutes to get started.
           </p>
+          <p className="text-white/60 text-xl max-w-2xl mx-auto">
+            Or bring us your Facebook page. We&apos;ll turn it into a real website.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button href="/contact" size="lg">
+            <Button href="/get-started" size="lg">
               Let&apos;s Build Yours
               <ArrowRightIcon className="w-5 h-5 ml-2" />
             </Button>
@@ -645,10 +802,14 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <GradientDivider />
       <Problem />
       <HowItWorks />
+      <GradientDivider />
       <TransformationEngine />
+      <GradientDivider />
       <FeaturedWork />
+      <GradientDivider />
       <PricingPreview />
       <Testimonial />
       <FinalCTA />
