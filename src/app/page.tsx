@@ -231,7 +231,7 @@ function Hero() {
           {/* Main headline */}
           <motion.h1
             variants={fadeUp}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight"
           >
             <span className="block text-white">Your digital presence is</span>
             <span className="block gradient-text gradient-text-grain animate-gradient">costing you customers.</span>
@@ -301,57 +301,29 @@ function Hero() {
   );
 }
 
-// Problem + Statement Section (merged narrative beat)
+// Problem Section - concise with visual punch
 function ProblemStatement() {
   return (
-    <section className="py-28 sm:py-36 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* The problem */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-2xl sm:text-3xl md:text-4xl text-white/80 leading-relaxed"
-        >
-          Most businesses know they need a better website.
-          <br />
-          <span className="text-white/50">
-            They just don&apos;t have $5,000 and 3 months to get one.
-          </span>
-        </motion.p>
-
-        {/* The payoff */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-3xl sm:text-4xl font-bold gradient-text mt-8"
-        >
-          We build it for free. You only pay when you love it.
-        </motion.p>
-
-        {/* Animated gradient divider */}
+    <section className="py-24 sm:py-32 relative overflow-hidden">
+      {/* Subtle gradient glow in background */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-[600px] h-[600px] rounded-full bg-owsh-magenta/5 blur-[150px]" />
+      </div>
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mx-auto my-16 sm:my-20 h-px w-48 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple origin-center"
-        />
-
-        {/* The big statement */}
-        <motion.h2
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight"
+          transition={{ duration: 0.7 }}
+          className="gradient-border p-10 sm:p-16"
         >
-          The first place your customers look is online.{" "}
-          <span className="gradient-text gradient-text-grain animate-gradient">What do they find?</span>
-        </motion.h2>
+          <p className="text-xl sm:text-2xl md:text-3xl text-white/70 leading-relaxed mb-6">
+            Most businesses know they need a better website. They just don&apos;t have $5,000 and 3 months to get one.
+          </p>
+          <p className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text">
+            We build it for free. You only pay when you love it.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
