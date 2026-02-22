@@ -78,7 +78,9 @@ export default function BeforeAfterSlider() {
         src="/work/twin-trees-after-hero.jpg"
         alt="Twin Trees Fayetteville website after redesign"
         fill
+        quality={95}
         className="object-cover"
+        style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
         draggable={false}
       />
 
@@ -91,7 +93,9 @@ export default function BeforeAfterSlider() {
           src="/work/twin-trees-before-hero.jpg"
           alt="Twin Trees Fayetteville website before redesign"
           fill
+          quality={95}
           className="object-cover"
+          style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
           draggable={false}
         />
       </div>

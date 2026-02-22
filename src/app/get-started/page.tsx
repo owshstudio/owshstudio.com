@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GetStartedForm from "./GetStartedForm";
+import MultiStepForm from "./MultiStepForm";
 
 export const metadata: Metadata = {
   title: "Get Started",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function GetStartedPage() {
-  return <GetStartedForm />;
+  return <MultiStepForm />;
 }

@@ -182,7 +182,7 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20"
     >
       {/* Animated gradient orbs with different parallax speeds */}
       <div className="absolute inset-0 overflow-hidden">
@@ -231,10 +231,10 @@ function Hero() {
           {/* Main headline */}
           <motion.h1
             variants={fadeUp}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight"
           >
             <span className="block text-white">Your digital presence is</span>
-            <span className="block gradient-text animate-gradient" style={{ backgroundSize: "200% 200%" }}>costing you customers.</span>
+            <span className="block gradient-text gradient-text-grain animate-gradient">costing you customers.</span>
           </motion.h1>
 
           {/* Subheadline - no price */}
@@ -301,54 +301,63 @@ function Hero() {
   );
 }
 
-// Problem/Solution Section
-function Problem() {
+// Problem + Statement Section (merged narrative beat)
+function ProblemStatement() {
   return (
-    <section className="py-24 sm:py-32 relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
+    <section className="py-28 sm:py-36 relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* The problem */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          transition={{ duration: 0.6 }}
+          className="text-2xl sm:text-3xl md:text-4xl text-white/80 leading-relaxed"
         >
-          <p className="text-2xl sm:text-3xl md:text-4xl text-white/80 leading-relaxed">
-            Most businesses know they need a better website.
-            <br />
-            <span className="text-white/50">
-              They just don&apos;t have $5,000 and 3 months to get one.
-            </span>
-          </p>
-          <p className="text-3xl sm:text-4xl font-bold gradient-text">
-            We build it for free. You only pay when you love it.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+          Most businesses know they need a better website.
+          <br />
+          <span className="text-white/50">
+            They just don&apos;t have $5,000 and 3 months to get one.
+          </span>
+        </motion.p>
 
-// Large Statement Typography Section
-function BigStatement() {
-  return (
-    <section className="py-32 sm:py-40 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* The payoff */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="text-3xl sm:text-4xl font-bold gradient-text mt-8"
+        >
+          We build it for free. You only pay when you love it.
+        </motion.p>
+
+        {/* Animated gradient divider */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mx-auto my-16 sm:my-20 h-px w-48 bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple origin-center"
+        />
+
+        {/* The big statement */}
         <motion.h2
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white leading-tight"
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight"
         >
           The first place your customers look is online.{" "}
-          <span className="gradient-text">What do they find?</span>
+          <span className="gradient-text gradient-text-grain animate-gradient">What do they find?</span>
         </motion.h2>
       </div>
     </section>
   );
 }
 
-// How It Works Section - Horizontal Scroll on Desktop
+// How It Works Section - Vertical 3-column grid
 function HowItWorks() {
   const steps = [
     {
@@ -371,90 +380,52 @@ function HowItWorks() {
     },
   ];
 
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-65%"]);
-
   return (
-    <section ref={sectionRef} className="relative">
-      {/* Desktop: horizontal scroll */}
-      <div className="hidden md:block h-[300vh]">
-        <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-12">
-            <motion.h2
-              {...slideFromLeft}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
+    <section className="py-24 sm:py-32 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          {...slideFromLeft}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            How it works
+          </h2>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            No upfront costs. No long contracts. Just a great website.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15 }}
+              className="relative group"
             >
-              How it works
-            </motion.h2>
-            <p className="text-white/60 text-lg max-w-2xl">
-              No upfront costs. No long contracts. Just a great website.
-            </p>
-          </div>
-
-          <motion.div style={{ x }} className="flex gap-8 pl-8">
-            {steps.map((step) => (
-              <div
-                key={step.number}
-                className="flex-shrink-0 w-[500px] group"
-              >
-                <div className="gradient-border p-10 h-full hover:bg-white/[0.02] transition-colors">
-                  <span className="text-6xl font-bold gradient-text opacity-50 group-hover:opacity-100 transition-opacity">
-                    {step.number}
-                  </span>
-                  <h3 className="text-2xl font-semibold text-white mt-6 mb-4">
-                    {step.title}
-                  </h3>
-                  <p className="text-white/60 text-lg leading-relaxed">{step.description}</p>
+              {/* Connecting arrow between steps (desktop only) */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:flex absolute top-16 -right-4 lg:-right-5 z-10 items-center">
+                  <div className="w-6 lg:w-8 h-px bg-gradient-to-r from-owsh-orange via-owsh-magenta to-owsh-purple" />
+                  <svg className="w-3 h-3 text-owsh-magenta -ml-px" fill="currentColor" viewBox="0 0 12 12">
+                    <path d="M4 1l6 5-6 5V1z" />
+                  </svg>
                 </div>
+              )}
+
+              <div className="gradient-border p-8 lg:p-10 h-full hover:bg-white/[0.03] transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(249,66,95,0.15)]">
+                <span className="text-7xl font-bold gradient-text opacity-40 group-hover:opacity-100 transition-opacity duration-300">
+                  {step.number}
+                </span>
+                <h3 className="text-xl lg:text-2xl font-semibold text-white mt-6 mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-white/60 leading-relaxed">{step.description}</p>
               </div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Mobile: vertical stack */}
-      <div className="md:hidden py-24 sm:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              How it works
-            </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              No upfront costs. No long contracts. Just a great website.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-8">
-            {steps.map((step, index) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                className="relative group"
-              >
-                <div className="gradient-border p-8 h-full hover:bg-white/[0.02] transition-colors">
-                  <span className="text-5xl font-bold gradient-text opacity-50 group-hover:opacity-100 transition-opacity">
-                    {step.number}
-                  </span>
-                  <h3 className="text-xl font-semibold text-white mt-4 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-white/60">{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -882,8 +853,7 @@ export default function Home() {
     <>
       <Hero />
       <GradientDivider />
-      <Problem />
-      <BigStatement />
+      <ProblemStatement />
       <HowItWorks />
       <GradientDivider />
       <TransformationEngine />
